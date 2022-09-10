@@ -1,0 +1,95 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "build_cpp",
+				"type": "cppbuild",
+				"command": "g++",
+				"args": [
+					"-g",
+					"bubble_sort.cpp",
+					"-o",
+					"bubble"
+				],
+				"options": {
+					"cwd": "${workspaceFolder}"
+				},
+				"problemMatcher": []
+			},
+			{
+				"label": "build_binary",
+				"type": "cppbuild",
+				"command": "g++",
+				"args": [
+					"-g",
+					"tertiary_search.cpp",
+					"-o",
+					"tertiary_search"
+				],
+				"options": {
+					"cwd": "${workspaceFolder}"
+				},
+				"problemMatcher": []
+			},
+		]
+	},
+	"launch": {
+		"configurations": [
+			{
+				"name": "g++ binary_search",
+				"type": "cppdbg",
+				"request": "launch",
+				"program": "${workspaceFolder}/tertiary_search",
+				"args": [],
+				"stopAtEntry": false,
+				"cwd": "${workspaceFolder}",
+				"environment": [],
+				"externalConsole": false,
+				"MIMode": "gdb",
+				"setupCommands": [
+					{
+						"description": "Enable pretty-printing for gdb",
+						"text": "-enable-pretty-printing",
+						"ignoreFailures": true
+					}
+				],
+				"preLaunchTask": "build_binary",
+				"miDebuggerPath": "/usr/bin/gdb",
+			},
+			{
+				"name": "g++ debug",
+				"type": "cppdbg",
+				"request": "launch",
+				"program": "${workspaceFolder}/bubble_sort",
+				"args": [],
+				"stopAtEntry": false,
+				"cwd": "${workspaceFolder}",
+				"environment": [],
+				"externalConsole": false,
+				"MIMode": "gdb",
+				"setupCommands": [
+					{
+						"description": "Enable pretty-printing for gdb",
+						"text": "-enable-pretty-printing",
+						"ignoreFailures": true
+					}
+				],
+				"preLaunchTask": "build_cpp",
+				"miDebuggerPath": "/usr/bin/gdb",
+			}
+		],
+		"compounds": []
+	},
+	"settings": {
+		"files.associations": {
+			"ostream": "cpp",
+			"iostream": "cpp"
+		}
+	}
+}
