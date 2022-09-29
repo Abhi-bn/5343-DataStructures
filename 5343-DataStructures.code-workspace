@@ -23,6 +23,21 @@
 				"problemMatcher": []
 			},
 			{
+				"label": "build_bst",
+				"type": "cppbuild",
+				"command": "g++",
+				"args": [
+					"-g",
+					"main.cpp",
+					"-o",
+					"BST"
+				],
+				"options": {
+					"cwd": "${workspaceFolder}/homework2"
+				},
+				"problemMatcher": []
+			},
+			{
 				"label": "build_binary",
 				"type": "cppbuild",
 				"command": "g++",
@@ -82,14 +97,38 @@
 				],
 				"preLaunchTask": "build_cpp",
 				"miDebuggerPath": "/usr/bin/gdb",
+			},
+			{
+				"name": "g++ debug bst",
+				"type": "cppdbg",
+				"request": "launch",
+				"program": "${workspaceFolder}/homework2/BST",
+				"args": [],
+				"stopAtEntry": false,
+				"cwd": "${workspaceFolder}/homework2",
+				"environment": [],
+				"externalConsole": false,
+				"MIMode": "gdb",
+				"setupCommands": [
+					{
+						"description": "Enable pretty-printing for gdb",
+						"text": "-enable-pretty-printing",
+						"ignoreFailures": true
+					}
+				],
+				"preLaunchTask": "build_bst",
+				"miDebuggerPath": "/usr/bin/gdb",
 			}
 		],
 		"compounds": []
 	},
 	"settings": {
+		"C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 4 ,ColumnLimit: 0}",
 		"files.associations": {
 			"ostream": "cpp",
-			"iostream": "cpp"
+			"iostream": "cpp",
+			"array": "cpp",
+			"string_view": "cpp"
 		}
 	}
 }
