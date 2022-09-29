@@ -11,16 +11,14 @@ int main() {
         bst.insertToBST(vec[i]);
     }
     bst.PrintInOrder();
-    bst.deleteFromBST(40);
-    bst.PrintInOrder();
-    bst.deleteFromBST(15);
-    bst.PrintInOrder();
-    bst.deleteFromBST(9);
-    bst.PrintInOrder();
-    bst.deleteFromBST(20);
-    bst.PrintInOrder();
-    bst.deleteFromBST(10);
-    bst.PrintInOrder();
-    bst.deleteFromBST(30);
-    bst.PrintInOrder();
+    string c = "y";
+    while (c == "y") {
+        int val;
+        cout << "Enter the Node to be deleted" << endl;
+        cin >> val;
+        bst.deleteFromBST(val);
+        bst.PrintInOrder();
+        cout << "Deleted more elements? [Y/n]" << endl;
+        cin >> c;
+    }
 }
