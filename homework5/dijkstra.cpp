@@ -125,6 +125,25 @@ void dijkstra(std::vector<int> vertices, std::vector<vector<int>> paths, int ini
     }
     TreeNode::printBT("", head, false);
 }
+void print_vertices(std::vector<int> v, int initial) {
+    cout << "Vertices" << endl;
+    sort(v.begin(), v.end(), [&](int i1, int i2) {
+        if (i1 == initial) return true;
+        // if (i2 == initial) return true;
+        return i1 < i2;
+    });
+    for (int i = 0; i < v.size(); i++) cout << v[i] << " ";
+    cout << endl;
+}
+
+void print_paths(std::vector<std::vector<int>> p) {
+    cout << "Paths" << endl;
+    sort(p.begin(), p.end(), [](std::vector<int> f, std::vector<int> s) { return f[0] < s[0]; });
+    for (int i = 0; i < p.size(); i++) {
+        cout << p[i][0] << " \t->\t " << p[i][1] << "\t ( path weight: " << p[i][2] << " )\n";
+    }
+    cout << endl;
+}
 
 int main() {
     // std::vector<int> vertices = {0, 1, 2, 3, 4, 5, 6, 7, 8};
@@ -135,6 +154,10 @@ int main() {
     //   {4, 7, 1}, {4, 8, 1}, {5, 8, 1}, {6, 7, 1}, {6, 9, 2}, {6, 10, 3}, {7, 8, 2}, {7, 10, 4}, {8, 9, 1}, {8, 10, 1}, {9, 10, 1}};
     std::vector<vector<int>> paths = {{0, 1, 1}, {0, 2, 4}, {1, 2, 2},  {1, 3, 9}, {1, 6, 4}, {2, 3, 1}, {2, 4, 3}, {3, 4, 1}, {3, 6, 1},  {3, 5, 3},   {4, 5, 1},  {4, 8, 5},
                                       {6, 8, 3}, {8, 5, 2}, {8, 7, 14}, {1, 7, 2}, {6, 9, 2}, {6, 5, 6}, {5, 9, 6}, {7, 9, 5}, {0, 10, 5}, {0, 11, 12}, {10, 11, 5}};
-    cout << "Tree" << endl;
-    dijkstra(vertices, paths, 0);
+    int src = 0;
+    print_vertices(vertices, src);
+    print_paths(paths);
+    cout << "Dijkstra Path with their wait from src: " << src << endl;
+    print_vertices(vertices, src);
+    dijkstra(vertices, paths, src);
 }
